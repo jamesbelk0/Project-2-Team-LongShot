@@ -22,6 +22,5 @@ const loginFormHandler = async function (event) {
       alert(response.statusText);
     }
   }
-  
 
 };
