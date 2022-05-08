@@ -12,7 +12,7 @@ router.get('/:id', (req,res) => {
 
 });
 
-// to create a post
+// to create a category
 router.post('/', (req,res) => {
 
 });
