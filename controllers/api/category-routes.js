@@ -1,10 +1,10 @@
 const router = require('express').Router();
 // TODO: INSERT THE MODEL NAMES THAT WILL BE USED
-const {} = require('../../models');
+const {Category} = require('../../models');
 
 // to get all post
 router.get('/', (req,res) => {
-
+    Category.findAll
 });
 
 // to get single post
