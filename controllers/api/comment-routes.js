@@ -1,4 +1,6 @@
 const router = require('express').Router();
+const sequelize = require('../../config/config');
+const { User, Post, Category } = require('../../models');
 // TODO: INSERT THE MODEL NAMES THAT WILL BE USED
 const {} = require('../../models');
 
