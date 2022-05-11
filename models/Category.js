@@ -3,7 +3,7 @@ const { Model, DataTypes } = require('sequelize');
 // require the connection
 const sequelize = require('../config/config');
 
-class Category extends Model {}
+class Category extends Model { }
 
 Category.init(
     {
@@ -13,7 +13,7 @@ Category.init(
             primaryKey: true,
             autoIncrement: true
         },
-        category_name: {
+        title: {
             type: DataTypes.STRING,
             allowNull: false
         },
@@ -22,6 +22,14 @@ Category.init(
             references: {
                 model: 'post',
                 key: 'id'
+            }
+        },
+
+        post_url: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                isURL: true
             }
         }
     },
