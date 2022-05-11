@@ -1,31 +1,29 @@
-//(PLACEHOLDER) function to gather form data and call our "POST /api/user" express route
-const signupFormHandler = async function (event) {
+async function signupFormHandler(event) {
   event.preventDefault();
 
-  const username = document.querySelector('#username-signup').value.trim();
-  const email = document.querySelector('#email-signup').value.trim();
-  const password = document.querySelector('#password-signup').value.trim();
+  // query the document for the selectors by their id and set the text from text area to a variable
+  const username = document.querySelector('#signUpUserName').value.trim();
+  const email = document.querySelector('#signUpUserEmail').value.trim();
+  const password = document.querySelector('#signUpUserPW').value.trim();
   
+  // conditional to check if the user filled out the textarea. if so create a new user using the post route
   if (username && email && password) {
-    const response = await fetch('/api/users', {
-      method: 'post',
-      body: JSON.stringify({
-        username,
-        email,
-        password
-      }),
-      headers: { 'Content-Type': 'application/json' }
-    });
-  
-    // check the response status
-    if (response.ok) {
-      console.log('success');
-    } else {
-      alert(response.statusText);
-    }
+      const response = await fetch('/api/users', {
+          method: 'POST',
+          body: JSON.stringify({
+              username,
+              email,
+              password
+          }),
+          headers: { 'Content-Type': 'application/json' }
+      });
+      if (response.ok) {
+          document.location.replace('/home/');
+      } else {
+          alert(response.statusText);
+      }
   }
+}
 
-};
-
-document.querySelector('.signup-form').addEventListener('submit', signupFormHandler);
+document.querySelector('#signUpBtn').addEventListener('click', signupFormHandler);
 
