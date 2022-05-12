@@ -4,10 +4,26 @@
             <label for="postTitle">Post Title:</label>
             <input class="form-control" type="text" name="post-title" placeholder="Enter a title for your post">
         </div>
+        <div class="btn-group">
+            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                Category
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="Automotive">Automotive</a>
+                <a class="dropdown-item" href="Health">Health</a>
+                <a class="dropdown-item" href="Food">Food</a>
+                <a class="dropdown-item" href="Pets">Pets</a>
+                <a class="dropdown-item" href="HomeImprovment">Home Improvment</a>
+                <a class="dropdown-item" href="DIY">DIY</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="NewNew">New Category</a>
+            </div>
+        </div>
         <div class="form-group mt-3">
             <label for="postContent">Post Content:</label>
-            <textarea class="form-control" id="postContentTextArea" name="post-content" placeholder="Enter the content for your post"
-                rows="5"></textarea>
+            <textarea class="form-control" id="postContentTextArea" name="post-content"
+                placeholder="Enter the content for your post" rows="5"></textarea>
         </div>
         <div class="form-group mt-4 mb-3">
             <label for="exampleFormControlFile1">Upload an image</label>
