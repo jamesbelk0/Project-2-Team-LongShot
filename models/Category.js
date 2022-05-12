@@ -17,19 +17,11 @@ Category.init(
             type: DataTypes.STRING,
             allowNull: false
         },
-        category_id: {
+        post_id: {
             type: DataTypes.INTEGER,
             references: {
                 model: 'post',
                 key: 'id'
-            }
-        },
-
-        post_url: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                isURL: true
             }
         }
     },

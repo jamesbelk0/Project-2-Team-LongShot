@@ -8,25 +8,25 @@ router.get('/', (req,res) => {
     Category.findAll({
         attributes: [
             'id',
-            'category_url',
-            'category_name',
-            'category_id',
-            [sequelize.literal('(SELECT COUNT(*) FROM category WHERE category.name = post.post_id)'), 'category_id']
-        ],
-        include: [
-            {
-                model: Comment,
-                attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-                include: {
-                  model: User,
-                  attributes: ['username']
-                }
-              },
-              {
-                model: User,
-                attributes: ['username']
-              }
-            ]
+            'title',
+            'post_id',
+            // [sequelize.literal('(SELECT COUNT(*) FROM category WHERE category.name = post.post_id)'), 'category_id']
+        ]
+        // ,
+        // include: [
+        //     {
+        //         model: Comment,
+        //         attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+        //         include: {
+        //           model: User,
+        //           attributes: ['username']
+        //         }
+        //       },
+        //       {
+        //         model: User,
+        //         attributes: ['username']
+        //       }
+        //     ]
           })
             .then(dbPostData => res.json(dbPostData))
             .catch(err => {
@@ -43,25 +43,25 @@ router.get('/:id', (req,res) => {
         },
         attributes: [
             'id',
-            'category_url',
-            'category_name',
-            'category_id',
-            [sequelize.literal('(SELECT COUNT(*) FROM category WHERE category.name = post.post_id)'), 'category_id']
-        ],
-        include: [
-            {
-                model: Comment,
-                attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-                include: {
-                  model: User,
-                  attributes: ['username']
-                }
-              },
-              {
-                model: User,
-                attributes: ['username']
-              }
-            ]
+            'title',
+            'post_id',
+            // [sequelize.literal('(SELECT COUNT(*) FROM category WHERE category.name = post.post_id)'), 'category_id']
+        ]
+        // ,
+        // include: [
+        //     {
+        //         model: Comment,
+        //         attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+        //         include: {
+        //           model: User,
+        //           attributes: ['username']
+        //         }
+        //       },
+        //       {
+        //         model: User,
+        //         attributes: ['username']
+        //       }
+        //     ]
           })
             .then(dbPostData => res.json(dbPostData))
             .catch(err => {
@@ -74,8 +74,6 @@ router.get('/:id', (req,res) => {
 router.post('/', (req,res) => {
     Category.create({
         title: req.body.title,
-        category_url: req.body.category_url,
-        user_id: req.session.user_id
     })
     .then(dbCategoryData => res.json(dbCategoryData))
     .catch(err => {
