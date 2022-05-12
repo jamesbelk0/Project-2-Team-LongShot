@@ -6,4 +6,8 @@ router.get("/", (req, res) => {
   res.render("home");
 });
 
+router.get("/main", (req, res) => {
+  res.render("main");
+});
+
 module.exports = router;
