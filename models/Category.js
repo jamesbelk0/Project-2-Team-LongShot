@@ -18,7 +18,7 @@ Category.init(
             allowNull: false
         },
         category_id: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.id,
             references: {
                 model: 'post',
                 key: 'id'
