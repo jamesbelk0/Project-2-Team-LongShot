@@ -1,20 +1,87 @@
 const router = require('express').Router();
-// TODO: INSERT THE MODEL NAMES THAT WILL BE USED
-const {Category} = require('../../models');
+const sequelize = require('../../config/config');
+const { User, Comment, Post } = require('../../models');
 
 // to get all post
 router.get('/', (req,res) => {
-    Category.findAll
-});
+    console.log('=========================');
+    Category.findAll({
+        attributes: [
+            'id',
+            'category_url',
+            'category_name',
+            'category_id',
+            [sequelize.literal('(SELECT COUNT(*) FROM category WHERE category.name = post.post_id)'), 'category_id']
+        ],
+        include: [
+            {
+                model: Comment,
+                attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+                include: {
+                  model: User,
+                  attributes: ['username']
+                }
+              },
+              {
+                model: User,
+                attributes: ['username']
+              }
+            ]
+          })
+            .then(dbPostData => res.json(dbPostData))
+            .catch(err => {
+              console.log(err);
+              res.status(500).json(err);
+            });
+        });
 
 // to get single post
 router.get('/:id', (req,res) => {
-
-});
+    Category.findOne({
+        where: {
+            id: req.params.id
+        },
+        attributes: [
+            'id',
+            'category_url',
+            'category_name',
+            'category_id',
+            [sequelize.literal('(SELECT COUNT(*) FROM category WHERE category.name = post.post_id)'), 'category_id']
+        ],
+        include: [
+            {
+                model: Comment,
+                attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+                include: {
+                  model: User,
+                  attributes: ['username']
+                }
+              },
+              {
+                model: User,
+                attributes: ['username']
+              }
+            ]
+          })
+            .then(dbPostData => res.json(dbPostData))
+            .catch(err => {
+              console.log(err);
+              res.status(500).json(err);
+            });
+        });
 
 // to create a category
 router.post('/', (req,res) => {
-
+    Category.create({
+        title: req.body.title,
+        category_url: req.body.category_url,
+        user_id: req.session.user_id
+    })
+    .then(dbCategoryData => res.json(dbCategoryData))
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
 });
 
 module.exports = router;
