@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../../config/config');
-const { User, Comment, Category } = require('../../models');
+const { User, Comment, Category, Post } = require('../../models');
 
 // to get all post
 router.get('/', (req, res) => {

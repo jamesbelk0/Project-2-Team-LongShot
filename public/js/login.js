@@ -1,26 +1,27 @@
-//(PLACEHOLDER) function to gather form data and call our "POST /api/user/login" express route
-const loginFormHandler = async function (event) {
+async function loginFormHandler(event) {
   event.preventDefault();
-  
-  const username = document.querySelector('#username-signup').value.trim();
-  const password = document.querySelector('#password-signup').value.trim();
-  
-  if (username && password) {
-    const response = await fetch('/api/users', {
-      method: 'post',
-      body: JSON.stringify({
-        username,
-        password
-      }),
-      headers: { 'Content-Type': 'application/json' }
-    });
-  
-    // check the response status
-    if (response.ok) {
-      console.log('success');
-    } else {
-      alert(response.statusText);
-    }
-  }
 
-};
+  // query the document for the selectors by their id and set the text from text area to a variable
+  const username = document.querySelector('#loginUserName').value.trim();
+  const password = document.querySelector('#loginPassword').value.trim();
+
+  // conditional to check if the user filled out the textareas. if so log the user in using the post route
+  if (username && password) {
+      const response = await fetch('/api/users/login', {
+          method: 'post',
+          body: JSON.stringify({
+              username,
+              password
+          }),
+          headers: { 'Content-Type': 'application/json' }
+      });
+
+      if (response.ok) {
+          document.location.replace('/dashboard/');
+      } else {
+          alert(response.statusText);
+      }
+  }
+}
+
+document.querySelector('#logInBtn').addEventListener('click', loginFormHandler);
