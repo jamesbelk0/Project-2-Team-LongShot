@@ -10,8 +10,7 @@ router.get('/', (req, res) => {
             'id',
             'post_url',
             'title',
-            'created_at',
-            [sequelize.literal('(SELECT COUNT(*) FROM category WHERE post.id = category.post_id)'), 'category_name']
+            'created_at'
         ],
         include: [
             {
@@ -45,8 +44,7 @@ router.get('/:id', (req, res) => {
             'id',
             'post_url',
             'title',
-            'created_at',
-            [sequelize.literal('(SELECT COUNT(*) FROM category WHERE post.id = category.post_id')]
+            'created_at'
         ],
         include: [
             {
