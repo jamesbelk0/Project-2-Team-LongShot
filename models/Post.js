@@ -32,6 +32,10 @@ Post.init(
       image: {
         type: DataTypes.STRING,
         allowNull: true
+      },
+      category: {
+        type: DataTypes.STRING,
+        allowNull: false,
       }
     },
     {
