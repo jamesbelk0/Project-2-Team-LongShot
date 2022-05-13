@@ -2,7 +2,7 @@
     <form class="new-post-form">
         <div class="form-group mt-3">
             <label for="postTitle">Post Title:</label>
-            <input class="form-control" type="text" name="post-title" placeholder="Enter a title for your post">
+            <input class="form-control" type="text" name="post-title" placeholder="Enter a title for your post" id="name">
         </div>
         <div class="btn-group">
             <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
@@ -25,17 +25,11 @@
             <textarea class="form-control" id="postContentTextArea" name="post-content"
                 placeholder="Enter the content for your post" rows="5"></textarea>
         </div>
-        <div class="form-group mt-4 mb-3">
-            <label for="exampleFormControlFile1">Upload an image</label>
-            <input type="file" class="form-control-file" id="exampleFormControlFile1">
-        </div>
-        <div class="image-area mt-3 mb-3">
-            <img id="img-upload">
-        </div>
+        <input type="hidden" name="image_url" id="image_url" class="simple-file-upload">
         <div>
-            <button type="submit" class="btn btn-primary mt-3 mb-3">Submit Post</button>
+            <button type="submit" class="btn btn-primary mt-3 mb-3" id="submitBtn">Submit Post</button>
         </div>
     </form>
 </div>
 
-<script src="/javascript/user-post.js"></script>
+<script src="/js/submit-button.js"></script>

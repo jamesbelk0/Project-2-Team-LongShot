@@ -10,23 +10,22 @@ router.get('/', (req,res) => {
             'id',
             'title',
             'post_id',
-            // [sequelize.literal('(SELECT COUNT(*) FROM category WHERE category.name = post.post_id)'), 'category_id']
         ]
-        // ,
-        // include: [
-        //     {
-        //         model: Comment,
-        //         attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-        //         include: {
-        //           model: User,
-        //           attributes: ['username']
-        //         }
-        //       },
-        //       {
-        //         model: User,
-        //         attributes: ['username']
-        //       }
-        //     ]
+        ,
+        include: [
+            {
+                model: Comment,
+                attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+                include: {
+                  model: User,
+                  attributes: ['username']
+                }
+              },
+              {
+                model: User,
+                attributes: ['username']
+              }
+            ]
           })
             .then(dbPostData => res.json(dbPostData))
             .catch(err => {
@@ -45,23 +44,22 @@ router.get('/:id', (req,res) => {
             'id',
             'title',
             'post_id',
-            // [sequelize.literal('(SELECT COUNT(*) FROM category WHERE category.name = post.post_id)'), 'category_id']
         ]
-        // ,
-        // include: [
-        //     {
-        //         model: Comment,
-        //         attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-        //         include: {
-        //           model: User,
-        //           attributes: ['username']
-        //         }
-        //       },
-        //       {
-        //         model: User,
-        //         attributes: ['username']
-        //       }
-        //     ]
+        ,
+        include: [
+            {
+                model: Comment,
+                attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+                include: {
+                  model: User,
+                  attributes: ['username']
+                }
+              },
+              {
+                model: User,
+                attributes: ['username']
+              }
+            ]
           })
             .then(dbPostData => res.json(dbPostData))
             .catch(err => {
