@@ -57,4 +57,4 @@ Post.hasMany(Comment, {
 });
 
 
-module.exports = { User, Comment, Post, Category };
+module.exports = { User, Comment, Post };

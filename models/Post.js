@@ -18,9 +18,9 @@ Post.init(
       text: {
         type: DataTypes.STRING,
         allowNull: false,
-        validate: {
-          isURL: true
-        }
+        // validate: {
+        //   isURL: true
+        // }
       },
       user_id: {
         type: DataTypes.INTEGER,
@@ -32,6 +32,10 @@ Post.init(
       image: {
         type: DataTypes.STRING,
         allowNull: true
+      },
+      category: {
+        type: DataTypes.STRING,
+        allowNull: false,
       }
     },
     {
