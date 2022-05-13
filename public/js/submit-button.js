@@ -1,4 +1,9 @@
+
+// const Category = require("../../models/Category");
+
 const uploader = document.getElementById("image_url");
+const selectedCat = document.getElementById("category-select")
+
 
 async function submitBtnHandler(event) {
     event.preventDefault();
@@ -8,6 +13,7 @@ async function submitBtnHandler(event) {
     console.log(title);
     console.log(text);
     console.log(uploader.value);
+    console.log(selectedCat.value)
 
     // conditional to check if the user filled out the textarea. if so create a new user using the post route
     if (title && text) {
@@ -16,7 +22,9 @@ async function submitBtnHandler(event) {
             body: JSON.stringify({
                 title: title,
                 text: text,
-                image_url: uploader.value
+                image_url: uploader.value,
+                category: selectedCat.value
+
             }),
             headers: { 'Content-Type': 'application/json' }
         });

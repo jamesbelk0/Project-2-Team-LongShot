@@ -11,7 +11,9 @@ router.get('/', (req, res) => {
             'title',
             'text',
             'image',
+            'category',
             'created_at'
+
         ]
         // include: [
         //     {
@@ -81,8 +83,10 @@ router.post('/', (req, res) => {
     Post.create({
         title: req.body.title,
         text: req.body.text,
-        user_id: req.session.user.id,
-        image_url: req.body.image_url
+        // user_id: req.session.user.id,
+        image_url: req.body.image_url,
+        category: req.body.category
+
     })
         .then(dbPostData => res.json(dbPostData))
         .catch(err => {
