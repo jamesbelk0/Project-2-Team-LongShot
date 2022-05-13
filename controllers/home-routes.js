@@ -13,6 +13,11 @@ router.get("/main", (req, res) => {
 router.get("/user-post", (req, res) => {
   res.render("user-post");
 });
+
+router.get("/profile", (req, res) => {
+  res.render("profile");
+});
+
 // router.get('/', (req, res) => {
 //   console.log(req.session);
 //   Post.findAll({

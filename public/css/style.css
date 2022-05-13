@@ -1,0 +1,13 @@
+.image-area {
+    border: 2px dashed rgba(000, 000, 000, 0.7);
+    padding: 1rem;
+}
+
+.image-area::before {
+    content: 'Uploaded image result';
+    color: #000000;
+    font-weight: bold;
+    text-transform: uppercase;
+    transform: translate(-50%, -50%);
+    font-size: 0.8rem;
+}
