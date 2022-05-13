@@ -1,7 +1,9 @@
+
 // const Category = require("../../models/Category");
 
 const uploader = document.getElementById("image_url");
 const selectedCat = document.getElementById("category-select")
+
 
 // uploader.addEventListener("fileUploadStarted", function (e) {  
 //         uploaded = this.value
@@ -26,6 +28,7 @@ async function submitBtnHandler(event) {
                 text: text,
                 image_url: uploader.value,
                 category: selectedCat.value
+
             }),
             headers: { 'Content-Type': 'application/json' }
         });
