@@ -1,9 +1,5 @@
 const uploader = document.getElementById("image_url");
 
-// uploader.addEventListener("fileUploadStarted", function (e) {  
-//         uploaded = this.value
-//         console.log(uploaded);
-//      });
 async function submitBtnHandler(event) {
     event.preventDefault();
     // query the document for the selectors by their id and set the text from text area to a variable
