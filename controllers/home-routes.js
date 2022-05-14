@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const withAuth = require('../utils/auth');
 const { User, Post, Category, Comment } = require("../models/");
 
 // homepage
@@ -14,9 +15,30 @@ router.get("/user-post", (req, res) => {
   res.render("user-post");
 });
 
-router.get("/profile", (req, res) => {
-  res.render("profile");
-});
+router.get("/profile", withAuth, (req, res) => {
+  // Post.findAll({
+  //   where: {
+  //     user_id: req.session.user_id
+  //   },
+  //   attributes: [
+  //     'id',
+  //     'title',
+  //     'text',
+  //     'user_id',
+  //     'iamge',
+  //     'category',
+  //     'created_at',
+  //   ]
+  // })
+  //   .then(dbPostData => {
+  //     const posts = dbPostData.map(post => post.get({ plain: true }));
+      res.render('profile')
+    })
+    // .catch(err => {
+    //   console.log(err);
+    //   res.status(500).json(err);
+    // });
+// });
 
 // router.get('/', (req, res) => {
 //   console.log(req.session);

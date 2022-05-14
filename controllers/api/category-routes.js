@@ -34,11 +34,11 @@ router.get('/', (req,res) => {
             });
         });
 
-// to get single post
+// to get single category
 router.get('/:id', (req,res) => {
     Category.findOne({
         where: {
-            id: req.params.id
+            title: req.params.title
         },
         attributes: [
             'id',
@@ -67,6 +67,10 @@ router.get('/:id', (req,res) => {
               res.status(500).json(err);
             });
         });
+
+router.get('/', (req, res) => {
+  Category.findOne
+})        
 
 // to create a category
 router.post('/', (req,res) => {
