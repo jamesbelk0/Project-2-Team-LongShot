@@ -22,15 +22,20 @@
           </div>
           <ul class="nav navbar-nav navbar-right flex-row">
             <li><a class="text-decoration-none text-light p-2" href="/">Home</a></li>
+            {{#if loggedIn}}
             <li><a class="text-decoration-none text-light p-2" href="/user-post">Create Post</a></li>
             <li><a class="text-decoration-none text-light p-2" href="/profile">Profile</a></li>
+            <li><a class="text-decoration-none text-light p-2" href="/">Log Out</a></li>
+            {{else}}
             <li><a class="text-decoration-none text-light p-2" href="" data-toggle="modal"
                 data-target="#modalLoginForm">Login</a></li>
             <li><a class="text-decoration-none text-light p-2" href="" data-toggle="modal"
                 data-target="#modalSignUpForm">Sign Up</a></li>
+            {{/if}}
           </ul>
         </div>
       </nav>
+
     </header>
 
     <!-- <section class="container mb-5 mt-2 p-3">
@@ -76,7 +81,7 @@
               </main>
             </div>
           </div>
-          
+
           <hr />
         </div>
       </div>
