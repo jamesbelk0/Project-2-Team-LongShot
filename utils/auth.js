@@ -1,5 +1,5 @@
 const withAuth = (req, res, next) => {
-    if (!req.session.urse_id) {
+    if (!req.session.userId) {
         res.redirect('/');
     } else {
         next();
