@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
             'id',
             'title',
             'text',
-            'image',
+            'image_url',
             'category',
             'created_at'
 
@@ -47,7 +47,7 @@ router.get('/:id', (req, res) => {
             'id',
             'title',
             'text',
-            'image',
+            'image_url',
             'created_at'
         ]
         // include: [
