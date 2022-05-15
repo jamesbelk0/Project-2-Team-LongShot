@@ -26,7 +26,7 @@ router.get("/profile", withAuth, (req, res) => {
       'title',
       'text',
       'user_id',
-      'image',
+      'image_url',
       'category',
       'created_at',
     ]
@@ -43,7 +43,7 @@ router.get("/profile", withAuth, (req, res) => {
   });
 })
 
-router.get('/', (req, res) => {
+router.get('/', withAuth, (req, res) => {
   console.log('======================');
   Post.findAll({
     attributes: [
@@ -62,15 +62,11 @@ router.get('/', (req, res) => {
     .then(dbPostData => {
       const posts = dbPostData.map(post => post.get({ plain: true }));
       console.log(posts)
-      res.render('profile', {
-        posts
-    
-      });
-    })
+      res.render('profile', { loggedIn: true, posts })
+      })
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
-    });
+    })
 });
-
 module.exports = router;

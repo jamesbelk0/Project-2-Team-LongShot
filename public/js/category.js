@@ -16,10 +16,24 @@ homeImprovement.addEventListener('click', viewHomeImprovement);
 const diy  = document.getElementById('diy')
 diy.addEventListener('click', viewDiy);
 
+let category = ''
 
 async function viewAutomotive() {
     // render automotive posts
     console.log('This worked!')
+
+    let category = 'automotive';
+    
+    if (category === "automotive") {
+        const response = await fetch(`/api/post/Category/${category}`, {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' }
+        });
+        console.log(response);
+        if (!response.ok) {
+            alert(response.statusText);
+        }
+    }
 };
 
 async function viewHealth() {
