@@ -26,7 +26,7 @@ router.get("/profile", withAuth, (req, res) => {
       'title',
       'text',
       'user_id',
-      'image',
+      'image_url',
       'category',
       'created_at',
     ]

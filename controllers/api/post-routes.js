@@ -96,5 +96,33 @@ router.post('/', (req, res) => {
     
 });
 
+// To find all posts in a category
+router.get('/:Category', (req, res) => {
+    console.log('=================================');
+    Post.findAll(
+        {
+            where: {
+              Category: 'automotive'
+            }
+        }
+        // {
+        // attributes: [
+        //     'id',
+        //     'title',
+        //     'text',
+        //     'image_url'
+        // ]
+  
+    )
+    .then(dbPostData => {
+        // const posts = dbPostData.map(post => post.get({ plain: true }));
+        res.render('main', { loggedIn: true })
+      })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
 
 module.exports = router;

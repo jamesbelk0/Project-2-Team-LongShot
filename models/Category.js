@@ -21,7 +21,7 @@ Category.init(
             type: DataTypes.INTEGER,
             references: {
                 model: 'post',
-                key: 'id'
+                key: 'category'
             }
         }
     },
