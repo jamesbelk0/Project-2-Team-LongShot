@@ -1,12 +1,16 @@
 //We can call this function from our frontend to log out of the current session
-function logout() {
-  fetch("/api/user/logout", {
+async function logout() {
+  const response = await fetch("/api/users/logout", {
     method: "post",
     headers: { "Content-Type": "application/json" }
-  })
-    .then(function () {
-      //return to the homepage route
-      document.location.replace("/");
-    })
-    .catch(err => console.log(err));
+  });
+
+  if(response.ok){
+    //return to the homepage route
+    document.location.replace("/");
+  } else {
+    alert(response.statusText);
+  }
 }
+
+document.getElementById("log-out").addEventListener('click', logout);

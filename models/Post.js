@@ -5,46 +5,43 @@ class Post extends Model {}
 
 Post.init(
     {
-      id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        primaryKey: true,
-        autoIncrement: true
-      },
-      title: {
-        type: DataTypes.STRING,
-        allowNull: false
-      },
-      text: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        // validate: {
-        //   isURL: true
-        // }
-      },
-      user_id: {
-        type: DataTypes.INTEGER,
-        references: {
-          model: 'user',
-          key: 'id'
+        id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            primaryKey: true,
+            autoIncrement: true
+        },
+        title: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        text: {
+            type: DataTypes.TEXT,
+            allowNull: false,
+        },
+        user_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'user',
+                key: 'id'
+            }
+        },
+        image_url: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        category: {
+            type: DataTypes.STRING,
+            allowNull: false,
         }
-      },
-      image_url: {
-        type: DataTypes.STRING,
-        allowNull: true
-      },
-      category: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      }
     },
     {
-      sequelize,
-      freezeTableName: true,
-      underscored: true,
-      modelName: 'post'
+        sequelize,
+        freezeTableName: true,
+        underscored: true,
+        modelName: 'post'
     }
-  );
-  
+);
+
 
 module.exports = Post

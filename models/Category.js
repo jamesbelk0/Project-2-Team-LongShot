@@ -1,6 +1,4 @@
-// require the model and datatypes form sequelize
 const { Model, DataTypes } = require('sequelize');
-// require the connection
 const sequelize = require('../config/config');
 
 class Category extends Model { }
@@ -23,10 +21,19 @@ Category.init(
                 model: 'post',
                 key: 'id'
             }
+        },
+        user_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'user',
+                key: 'id'
+            }
         }
     },
     {
         sequelize,
+        timestamps: false,
         freezeTableName: true,
         underscored: true,
         modelName: 'category'

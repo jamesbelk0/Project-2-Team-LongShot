@@ -8,8 +8,8 @@ async function signupFormHandler(event) {
   
   // conditional to check if the user filled out the textarea. if so create a new user using the post route
   if (username && email && password) {
-      const response = await fetch('/api/user', {
-          method: 'POST',
+      const response = await fetch('/api/users', {
+          method: 'post',
           body: JSON.stringify({
               username,
               email,
