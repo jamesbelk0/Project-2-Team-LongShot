@@ -72,4 +72,33 @@ router.get('/', (req, res) => {
       });
   });
 
+  router.get('/Category/:Category', (req, res) => {
+    console.log('=================================');
+    Post.findAll(
+        {
+            where: {
+              Category: ['automotive', 'pets','health', 'food', 'home improvement', 'diy']
+            }
+        },
+        {
+        attributes: [
+            'id',
+            'title',
+            'text',
+            'image_url'
+        ]
+      }
+    )
+    .then(dbPostData => {
+      console.log(dbPostData);
+      console.log("it worked");
+        const posts = dbPostData.map(post => post.get({ plain: true }));
+        res.json(posts)
+      })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
   module.exports = router;

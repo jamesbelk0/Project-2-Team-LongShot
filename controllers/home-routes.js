@@ -59,7 +59,7 @@ router.get('/post/:id', (req, res) => {
 
         const post = dbPostData.get({plain: true});
 
-        res.render('read-more', { post });
+        res.render('read-more', { post, loggedIn: req.session.loggedIn  });
     })
     .catch(err => {
         console.log(err);
@@ -69,7 +69,7 @@ router.get('/post/:id', (req, res) => {
 });
 
 router.get("/user-post", (req, res) => {
-    res.render("user-post");
+    res.render("user-post", {loggedIn: req.session.loggedIn});
 });
 
 
