@@ -72,12 +72,12 @@ router.get('/', (req, res) => {
       });
   });
 
-  router.get('/Category/:Category', (req, res) => {
+  router.get('/category/:category', (req, res) => {
     console.log('=================================');
     Post.findAll(
         {
             where: {
-              Category: ['automotive', 'pets','health', 'food', 'home improvement', 'diy']
+              category: req.params.category
             }
         },
         {
@@ -90,9 +90,9 @@ router.get('/', (req, res) => {
       }
     )
     .then(dbPostData => {
-      console.log(dbPostData);
       console.log("it worked");
         const posts = dbPostData.map(post => post.get({ plain: true }));
+        console.log(posts)
         res.json(posts)
       })
     .catch(err => {

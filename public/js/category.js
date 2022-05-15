@@ -25,7 +25,7 @@ async function viewAutomotive() {
     let category = 'automotive';
     
     if (category === "automotive") {
-        const response = await fetch(`/api/post/Category/${category}`, {
+        const response = await fetch(`/api/posts/category/${category}`, {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' }
         });
@@ -43,7 +43,7 @@ async function viewHealth() {
     let category = 'health';
     
     if (category === "health") {
-        const response = await fetch(`/api/post/Category/${category}`, {
+        const response = await fetch(`/api/posts/Category/${category}`, {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' }
         });
@@ -61,7 +61,7 @@ async function viewFood() {
     let category = 'food';
     
     if (category === "food") {
-        const response = await fetch(`/api/post/Category/${category}`, {
+        const response = await fetch(`/api/posts/Category/${category}`, {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' }
         });
@@ -79,7 +79,7 @@ async function viewPets() {
     let category = 'pet';
     
     if (category === "pet") {
-        const response = await fetch(`/api/post/Category/${category}`, {
+        const response = await fetch(`/api/posts/Category/${category}`, {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' }
         });
@@ -97,7 +97,7 @@ async function viewHomeImprovement() {
     let category = 'home improvements';
     
     if (category === "home improvements") {
-        const response = await fetch(`/api/post/Category/${category}`, {
+        const response = await fetch(`/api/posts/Category/${category}`, {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' }
         });
@@ -115,7 +115,7 @@ async function viewDiy() {
     let category = 'diy';
     
     if (category === "diy") {
-        const response = await fetch(`/api/post/Category/${category}`, {
+        const response = await fetch(`/api/posts/Category/${category}`, {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' }
         });
