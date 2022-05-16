@@ -10,7 +10,7 @@
 https://github.com/jamesbelk0/Show-Me-How
 
 ## Link to screenshot/media:
-A link to the heroku is here: https://git.heroku.com/boiling-fjord-93274.git
+A link to the heroku is here: https://boiling-fjord-93274.herokuapp.com/
 
 ## Description
 1. Using the site, a user must create a log in. 
