@@ -1,21 +1,35 @@
-{{#each posts}}
-<div class="col-xs-12 col-sm-12 col-md-6 col-lg-12 panel panel-default">
+<div class="container">
+  <div class="row mt-4 mb-2" style="width: 95vw">
+    {{#each posts}}
+      <div
+        class="col-xs-12 col-sm-6 col-lg-3 m-2 p-4 shadow p-3 mb-5 bg-white rounded"
+      >
         <div>
-            <p class="display-2">Review Your Posts</p>
-        </div>
-        <hr>
-    <div class="panel-body">
-        <img src={{image_url}} alt="" class="img-thumbnail img-responsive" />
-        <p class="text-muted">
-            <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+          <img src={{image_url}} alt="" class="img-thumbnail img-responsive" />
+          <p class="text-muted">
+            Posted
             {{format_date created_at}}
-        </p>
-        <h3>{{title}}</h3>
-        <p class="text-truncate">
+            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+
+          </p>
+          <h3>{{title}}</h3>
+          <small class="text-muted">
+            Topic:
+            {{category}}
+          </small>
+          <p class="text-truncate">
             {{text}}
-        </p>
-        <a href="/post/{{id}}" class="btn btn-default" role="read-button">Read more...</a>
-        <hr>
-    </div>
+          </p>
+          {{! <button type="button" id="read-button" class="btn btn-link text-info">Link</button> }}
+          <a
+            href="/post/{{id}}"
+            class="btn btn-outline-info"
+            role="read-button"
+          >Read more...</a>
+
+        </div>
+      </div>
+    {{/each}}
+  </div>
+
 </div>
-{{/each}}
