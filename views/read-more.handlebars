@@ -1,18 +1,16 @@
-<div>
-    <h1>{{post.title}}</h1>
-</div>
-<div class="col-xs-12 col-sm-12 col-md-6 col-lg-12 panel panel-default">
-    <div class="panel-body">
-        <img src={{post.image_url}} alt="" class="img-thumbnail img-responsive" />
-        <p class="text-muted">
-            By
-            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-            {{user.username}}
-            <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-            {{format_date post.created_at}}
-        </p>
-        <p>
-            {{post.text}}
-        </p>
-    </div>
+<div class="text-center mt-4 mb-5">
+  <h1>{{post.title}}</h1>
+  <img src={{post.image_url}} alt="" class="img-thumbnail img-responsive" />
+  <p class="text-muted m-0">
+    Posted
+    {{format_date post.created_at}}
+  </p>
+
+  <small class="text-muted m-0">
+    Topic:
+    {{post.category}}
+  </small>
+  <p class="text-truncate">
+    {{post.text}}
+  </p>
 </div>
