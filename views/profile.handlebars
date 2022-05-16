@@ -1,0 +1,21 @@
+{{#each posts}}
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-12 panel panel-default">
+        <div>
+            <p class="display-2">Review Your Posts</p>
+        </div>
+        <hr>
+    <div class="panel-body">
+        <img src={{image_url}} alt="" class="img-thumbnail img-responsive" />
+        <p class="text-muted">
+            <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+            {{format_date created_at}}
+        </p>
+        <h3>{{title}}</h3>
+        <p class="text-truncate">
+            {{text}}
+        </p>
+        <a href="/post/{{id}}" class="btn btn-default" role="read-button">Read more...</a>
+        <hr>
+    </div>
+</div>
+{{/each}}

@@ -1,92 +1,101 @@
 const router = require('express').Router();
 const sequelize = require('../../config/config');
-const { User, Comment, Category, Post } = require('../../models');
+const { User, Post, Category } = require('../../models');
 
-// to get all post
+// ALL POSTS
 router.get('/', (req, res) => {
-    console.log('=================================');
-    Post.findAll({
-        attributes: [
-            'id',
-            'post_url',
-            'title',
-            'created_at'
-        ],
-        include: [
-            {
-                model: Comment,
-                attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-                include: {
-                    model: User,
-                    attributes: ['username']
-                }
-            },
-            {
-                model: User,
-                attributes: ['username']
-            }
-        ]
-    })
-    .then(dbPostData=> res.json(dbPostData))
+  Post.findAll({
+    attributes: ['id', 'title', 'text', 'image_url', 'category', 'user_id', 'created_at'],
+    order: [['created_at', 'DESC']],
+    include: [
+      {
+        model: User,
+        attributes: ['username']
+      }
+    ]
+  })
+    .then(dbPostData => res.json(dbPostData))
     .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
+      console.log(err);
+      res.status(500).json(err);
     });
 });
 
-// to get single post
+// GET ONE POST
 router.get('/:id', (req, res) => {
-    Post.findOne({
-        where: {
-            id: req.params.id
-        },
-        attributes: [
-            'id',
-            'post_url',
-            'title',
-            'created_at'
-        ],
-        include: [
-            {
-                model: Comment,
-                attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-                include: {
-                    model: User,
-                    attributes: ['username']
-                }
-            },
-            {
-                model: User,
-                attributes: ['username']
-            }
-        ]
+  Post.findOne({
+    where: {
+      id: req.params.id
+    },
+    attributes: ['id', 'image_url', 'title', 'created_at'],
+    include: [
+      {
+        model: User,
+        attributes: ['username']
+      }
+    ]
+  })
+    .then(dbPostData => {
+      if (!dbPostData) {
+        res.status(404).json({ message: 'No post found with this id' });
+        return;
+      }
+      res.json(dbPostData);
     })
-        .then(dbPostData => {
-            if (!dbPostData) {
-                res.status(404).json({ message: 'No post found with this id' });
-                return;
-            }
-            res.json(dbPostData);
-        })
-        .catch(err => {
-            console.log(err);
-            res.status(500).json(err);
-        });
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
-// to create a post
+// CREATE A POST
 router.post('/', (req, res) => {
-    Post.create({
-        title: req.body.title,
-        post_url: req.body.post_url,
-        user_id: req.session.user.id
-    })
-        .then(dbPostData => res.json(dbPostData))
-        .catch(err => {
-            console.log(err);
-            res.status(500).json(err);
-        });
+  Post.create({
+    title: req.body.title,
+    text: req.body.text,
+    image_url: req.body.image_url,
+    category: req.body.category,
+    user_id: req.session.user_id
+  })
+    .then(dbPostData => res.json(dbPostData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
+router.get('/Category/:Category', (req, res) => {
+  console.log('=================================');
+  Post.findAll({
+    where: {
+      Category: ['automotive', 'pets', 'health', 'food', 'home-improvement', 'diy']
+    },
+    attributes: ['id', 'title', 'text', 'image_url', 'category', 'created_at'],
+    include: [
+      {
+        model: Category,
+        attributes: ['id', 'post_id', 'user_id'],
+        include: {
+          model: User,
+          attributes: ['username']
+        }
+      },
+      {
+        model: Category,
+        attributes: ['title']
+      }
+    ]
+  })
+    .then(dbPostData => {
+      console.log(dbPostData);
+      console.log("it worked");
+      const posts = dbPostData.map(post => post.get({ plain: true }));
+      res.render('home', { posts, loggedIn: req.session.loggedIn });
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
 
 module.exports = router;

@@ -1,31 +1,21 @@
-<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
-  <div class="panel panel-default">
+{{#each posts}}
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-12 panel panel-default">
     <div class="panel-body">
-      <img
-        src="https://images.pexels.com/photos/262508/pexels-photo-262508.jpeg?h=350&auto=compress&cs=tinysrgb"
-        alt=""
-        class="img-thumbnail img-responsive"
-      />
-      <p class="text-muted">
-        By
-          <span
-            class="glyphicon glyphicon-user"
-            aria-hidden="true"
-          ></span>
-          Lorem Ipsum |
-          <span
-            class="glyphicon glyphicon-calendar"
-            aria-hidden="true"
-          ></span>
-          Jan/21/2022
+        <img src={{image_url}} alt="" class="img-thumbnail img-responsive" />
+        <p class="text-muted">
+            By
+            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+            {{username}}
+            <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+            {{format_date created_at}}
         </p>
-        <h3>Title</h3>
-        <p>
-          paragraph
+        <h3>{{title}}</h3>
+        <p class="text-truncate">
+            {{text}}
         </p>
-        <a href="#" class="btn btn-default"
-          >Read more...</a
-        >
+        {{!-- <button type="button" id="read-button" class="btn btn-link text-info">Link</button> --}}
+        <a href="/post/{{id}}" class="btn btn-default" role="read-button">Read more...</a>
+        <hr>
     </div>
-  </div>
 </div>
+{{/each}}

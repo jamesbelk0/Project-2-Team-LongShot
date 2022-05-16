@@ -1,6 +1,4 @@
-// require the model and datatypes form sequelize
 const { Model, DataTypes } = require('sequelize');
-// require the connection
 const sequelize = require('../config/config');
 
 class Category extends Model { }
@@ -17,28 +15,30 @@ Category.init(
             type: DataTypes.STRING,
             allowNull: false
         },
-        category_id: {
+        post_id: {
             type: DataTypes.INTEGER,
             references: {
                 model: 'post',
                 key: 'id'
             }
         },
-
-        post_url: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                isURL: true
+        user_id: {
+            type: DataTypes.INTEGER,
+            allowNull: true,
+            references: {
+                model: 'user',
+                key: 'id'
             }
         }
     },
     {
         sequelize,
+        timestamps: false,
         freezeTableName: true,
         underscored: true,
         modelName: 'category'
     }
 );
+
 
 module.exports = Category;

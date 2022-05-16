@@ -7,7 +7,7 @@ async function loginFormHandler(event) {
 
   // conditional to check if the user filled out the textareas. if so log the user in using the post route
   if (username && password) {
-      const response = await fetch('/api/user/login', {
+      const response = await fetch('/api/users/login', {
           method: 'post',
           body: JSON.stringify({
               username,
@@ -17,7 +17,7 @@ async function loginFormHandler(event) {
       });
 
       if (response.ok) {
-          document.location.replace('/main');
+          document.location.replace('/');
       } else {
           alert(response.statusText);
       }
