@@ -1,5 +1,4 @@
 # Show Me How
-## Group Project 2
 
 ## User Story
 - AS A user
@@ -15,6 +14,9 @@ A link to the heroku is here: https://boiling-fjord-93274.herokuapp.com/
 ## Description
 1. Using the site, a user must create a log in. 
 2. Once created the user can view their posts, read posts from others and create new posts of their own. 
+
+## Technology Used
+- Node.js, Express.js, Handlebars, BootStrap, HTML, CSS, Sequelize
 
 ## Usage
 Run 'npm start' to get the app running
